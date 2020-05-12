@@ -5,6 +5,7 @@ import lombok.Data;
 
 /**
  * domain对象
+ * alt+7查看结构体
  */
 @Data @AllArgsConstructor
 public class DataBean {
