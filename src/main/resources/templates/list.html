@@ -3,13 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>国内疫情数据</title>
+    <link rel="stylesheet" th:href="@{/bootstrap.css}">
 </head>
 <body>
-<div align="center" style="width: 400px;height: auto;margin: 0 auto;background: aqua">
+<div align="center" style="width: 800px;height: auto;margin: 0 auto">
     <h2>国内疫情数据</h2>
-    <p>最后更新时间:<span th:text="${lastUpdateTime}">lastUpdateTime</span>
-    </p>
-    <table>
+    <!--<p>最后更新时间:<span th:text="${lastUpdateTime}">lastUpdateTime</span></p>-->
+
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>地区</th>

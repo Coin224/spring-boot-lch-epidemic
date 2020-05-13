@@ -22,7 +22,7 @@ public class DataHandler {
 
 
     // 处理爬取的JSON数据
-    public static Map<String, Object> getData() throws Exception{
+    public static List<DataBean> getData() throws Exception{
         //创建Gson对象的两种方法
         //Gson gson = new Gson();
         //Gson gson1 = new GsonBuilder().create();
@@ -42,7 +42,7 @@ public class DataHandler {
 //        fileReader.close();
 //        //System.out.println(builder.toString());
 
-        Map<String,Object> resultMap = new HashMap<>();
+        //Map<String,Object> resultMap = new HashMap<>();
 
         //从网页中获取实时数据  JSON
         String respJson = HttpURLConnectionUtil.getNetData(urlStr);
@@ -51,8 +51,8 @@ public class DataHandler {
         String mapJson = (String) map.get("data");
         Map map1 = gson.fromJson(mapJson,Map.class);
         //获取最后更新时间
-        String lastUpdateTime = (String) map1.get("lastUpdateTime");
-        resultMap.put("lastUpdateTime",lastUpdateTime);
+        //String lastUpdateTime = (String) map1.get("lastUpdateTime");
+        //resultMap.put("lastUpdateTime",lastUpdateTime);
 
         //转化为java对象
         //Map map = gson.fromJson(builder.toString(),Map.class);
@@ -73,9 +73,9 @@ public class DataHandler {
             DataBean dataBean = new DataBean(name,(int)nowConfirm,(int)confirm,(int)heal,(int)dead);
             resultList.add(dataBean);
         }
-        resultMap.put("resultList",resultList);
+        //resultMap.put("resultList",resultList);
         //System.out.println(resultMap);
-        return resultMap;
+        return resultList;
     }
 
 //    public static void main(String[] args) throws Exception {

@@ -1,0 +1,24 @@
+/*==============================================================*/
+/* DBMS name:      MYSQL50                                      */
+/* Created on:     2020/5/13 18:48:44                           */
+/*==============================================================*/
+
+
+drop table if exists illness;
+
+/*==============================================================*/
+/* Table: illness                                               */
+/*==============================================================*/
+create table illness
+(
+   id                   int not null auto_increment,
+   area                 varchar(50),
+   now_confirm          int(11),
+   confirm              int(11),
+   heal                 int(11),
+   dead                 int(11),
+   primary key (id)
+);
+
+alter table illness comment '这是一张存储国内疫情数据的表';
+
