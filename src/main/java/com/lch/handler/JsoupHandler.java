@@ -33,7 +33,7 @@ public class JsoupHandler {
         dataService.saveBatch(dataBeans);
     }
 
-    @Scheduled(cron = "0/1 * * * * ? ")
+    //@Scheduled(cron = "0/1 * * * * ? ")
     public void updateData() {
         saveData();
     }

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>国内疫情图表统计</title>
+    <!--把echarts文件引入到html中-->
+    <script type="text/javascript" src="echarts/echarts.min.js"></script>
+</head>
+<body>
+    <h2>国内疫情图表统计</h2>
+    <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script th:inline="javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+        var dateStr = [[${dateList}]];
+        var nowConfirmStr = [[${nowConfirmList}]];
+
+        // 指定图表的配置项和数据
+        var option = {
+            title:{
+                text:'全国现有确诊趋势'//标题组件
+            },
+            tooltip:{
+                trigger:'axis'//提示框组件
+            },
+            legend:{//曲线含义说明
+                data:['现邮件确诊说明']
+            },
+            xAxis: {
+                type: 'category',
+                data: dateStr
+            },
+            yAxis: {
+                type: 'value'
+            },
+            series: [{
+                name:'现有确诊',
+                data: nowConfirmStr,
+                type: 'line'
+            }]
+        };
+
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

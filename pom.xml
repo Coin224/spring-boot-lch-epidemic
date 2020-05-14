@@ -19,6 +19,17 @@
     </properties>
 
     <dependencies>
+
+        <!--实际生产中用HttpClient来进行Http请求-->
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.12</version>
+        </dependency>
+
+
+
         <!--谷歌开发的JSON解析工具-->
         <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
         <dependency>
