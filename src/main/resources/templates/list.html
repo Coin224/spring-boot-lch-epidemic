@@ -7,6 +7,17 @@
 </head>
 <body>
 <div align="center" style="width: 800px;height: auto;margin: 0 auto">
+    <div>
+        <h3>国内疫情图表数据</h3>
+        <a th:href="@{/graphLine}">全国现有确诊趋势</a><br>
+        <a th:href="@{/addgraph}">全国疫情新增趋势</a><br>
+        <a th:href="@{/totalgraph}">全国疫情累计趋势</a><br>
+        <a th:href="@{/healanddeadrate}">治愈率、死亡率</a><br>
+        <a th:href="@{/nowconfirmpie}">全国现有现有确诊构成</a><br>
+        <a th:href="@{/importgraph}">境外输入省市TOP10</a><br>
+        <a th:href="@{/importaddgraph}">境外输入新增趋势</a><br>
+        <a th:href="@{/totalImportGraph}">境外输入累计趋势</a><br>
+    </div>
     <h2>国内疫情数据</h2>
     <!--<p>最后更新时间:<span th:text="${lastUpdateTime}">lastUpdateTime</span></p>-->
 

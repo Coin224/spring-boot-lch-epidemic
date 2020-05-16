@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>治愈率、病死率</title>
+    <!--引入echarts文件-->
+    <script type="text/javascript" src="echarts/echarts.min.js"></script>
+</head>
+<body>
+<h2>全国累计确诊治愈死亡图</h2>
+<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+<div id="main" style="width: 600px;height:400px;"></div>
+<script th:inline="javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    var dateStr = [[${dateList}]];
+    var healRateLStr = [[${healRateList}]];
+    var deadRateStr = [[${deadRateList}]];
+
+    // 指定图表的配置项和数据
+    var option = {
+        title:{
+            text:'治愈率、死亡率'//标题组件
+        },
+        tooltip:{
+            trigger:'axis'//提示框组件
+        },
+        legend:{//曲线含义说明
+            data:['治愈率死亡率说明']
+        },
+        xAxis: {
+            type: 'category',
+            data: dateStr
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            name:'治愈率',
+            data: healRateLStr,
+            type: 'line'
+        },{
+            name:'死亡率',
+            data: deadRateStr,
+            type: 'line'
+        }]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>

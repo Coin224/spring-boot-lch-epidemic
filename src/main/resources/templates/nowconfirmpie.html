@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>全国现有疫情分布饼图</title>
+    <!--引入echarts文件-->
+    <script type="text/javascript" src="echarts/echarts.min.js"></script>
+</head>
+<body>
+<h2>全国现有疫情构成</h2>
+<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+<div id="main" style="width: 600px;height:400px;"></div>
+<script th:inline="javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+    var gatStr = [[${gat}]];
+    var importStr = [[${import}]];
+    var provinceStr = [[${province}]];
+
+    // 指定图表的配置项和数据
+    var option = {
+        backgroundColor: '#2c343c',
+
+        title: {
+            text: '全国现有疫情构成',
+            left: 'center',
+            top: 20,
+            textStyle: {
+                color: '#ccc'
+            }
+        },
+
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+
+        visualMap: {
+            show: false,
+            min: 80,
+            max: 600,
+            inRange: {
+                colorLightness: [0, 1]
+            }
+        },
+        series: [
+            {
+                name: '全国现有确诊构成',
+                type: 'pie',
+                radius: '50%',
+                center: ['50%', '50%'],
+                data: [{
+                    value: gatStr,
+                    name: '港澳台病例'
+                }, {
+                    value: importStr,
+                    name: '境外输入病例'
+                }, {
+                    value: provinceStr,
+                    name: '31省本土病例'
+                },].sort(function (a, b) { return a.value - b.value; }),
+                roseType: 'radius',
+                label: {
+                    color: 'rgba(255, 255, 255, 0.3)'
+                },
+                labelLine: {
+                    lineStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    },
+                    smooth: 0.2,
+                    length: 10,
+                    length2: 20
+                },
+                itemStyle: {
+                    color: '#c23531',
+                    shadowBlur: 200,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                },
+
+                animationType: 'scale',
+                animationEasing: 'elasticOut',
+                animationDelay: function (idx) {
+                    return Math.random() * 200;
+                }
+            }
+        ]
+    };
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>
